@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard - SkyWings</title>
+  <meta name="description" content="Manage your flights, bookings, and saved passengers with SkyWings dashboard.">
+  <meta property="og:title" content="My Dashboard - SkyWings">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#dashboard-content" class="skip-link">Skip to main content</a>
+  <div id="preloader"><div class="loader"><div class="loader-plane"><i class="fas fa-plane"></i></div><div class="loader-text">SkyWings</div><div class="loader-bar"></div></div></div>
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="navbar-brand" aria-label="SkyWings Home"><span class="brand-icon"><i class="fas fa-plane"></i></span><span>SkyWings</span></a>
+      <div class="navbar-nav" role="menubar">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        <a href="flights.html" class="nav-link" role="menuitem">Flights</a>
+        <a href="dashboard.html" class="nav-link active" aria-current="page" role="menuitem">Dashboard</a>
+        <a href="about.html" class="nav-link" role="menuitem">About</a>
+        <a href="pages/contact.html" class="nav-link" role="menuitem">Contact</a>
+        <div class="nav-actions"><button class="theme-toggle" aria-label="Toggle dark mode"></button></div>
+      </div>
+      <button class="navbar-toggler" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <div class="dashboard-page" id="dashboard-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <span class="current" aria-current="page">My Dashboard</span>
+      </nav>
+      <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+          <div class="dashboard-user">
+            <div class="dashboard-avatar">JD</div>
+            <h4>John Doe</h4>
+            <p>Member since 2024</p>
+          </div>
+          <ul class="dashboard-menu">
+            <li><a href="#" class="active" data-tab="overview"><i class="fas fa-th-large"></i> Overview</a></li>
+            <li><a href="#" data-tab="bookings"><i class="fas fa-bookmark"></i> My Bookings</a></li>
+            <li><a href="#" data-tab="passengers"><i class="fas fa-users"></i> Saved Passengers</a></li>
+            <li><a href="#" data-tab="notifications"><i class="fas fa-bell"></i> Notifications <span class="badge">2</span></a></li>
+            <li><a href="#" data-tab="settings"><i class="fas fa-cog"></i> Settings</a></li>
+          </ul>
+        </aside>
+        <main class="dashboard-content">
+          <div id="tab-overview" class="dashboard-tab-content">
+            <div class="stats-grid">
+              <div class="stat-card"><div class="stat-icon blue"><i class="fas fa-plane"></i></div><div class="stat-info"><span class="stat-number" id="stat-trips">2</span><span class="stat-label">Upcoming Trips</span></div></div>
+              <div class="stat-card"><div class="stat-icon orange"><i class="fas fa-check-circle"></i></div><div class="stat-info"><span class="stat-number" id="stat-bookings">15</span><span class="stat-label">Total Bookings</span></div></div>
+              <div class="stat-card"><div class="stat-icon green"><i class="fas fa-user-friends"></i></div><div class="stat-info"><span class="stat-number" id="stat-passengers">3</span><span class="stat-label">Saved Passengers</span></div></div>
+              <div class="stat-card"><div class="stat-icon purple"><i class="fas fa-heart"></i></div><div class="stat-info"><span class="stat-number" id="stat-favs">5</span><span class="stat-label">Favorites</span></div></div>
+            </div>
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Recent Bookings</h3><a href="#" onclick="document.querySelector('[data-tab=bookings]').click()">View All</a></div>
+              <div id="booking-history-list"></div>
+            </div>
+          </div>
+          <div id="tab-bookings" class="dashboard-tab-content" style="display:none">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Booking History</h3></div>
+              <div id="booking-history-list-full"></div>
+            </div>
+          </div>
+          <div id="tab-passengers" class="dashboard-tab-content" style="display:none">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Saved Passengers</h3><button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add Passenger</button></div>
+              <div id="passengers-list"></div>
+            </div>
+          </div>
+          <div id="tab-notifications" class="dashboard-tab-content" style="display:none">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Notifications</h3><button class="btn btn-sm btn-outline">Mark All Read</button></div>
+              <div id="notifications-list"></div>
+            </div>
+          </div>
+          <div id="tab-settings" class="dashboard-tab-content" style="display:none">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Account Settings</h3></div>
+              <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" value="John Doe"></div>
+                <div class="form-group"><label>Email</label><input type="email" value="john.doe@example.com"></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Phone</label><input type="tel" value="+234 800 000 0000"></div>
+                <div class="form-group"><label>Language</label><select><option>English</option><option>French</option><option>Arabic</option></select></div>
+              </div>
+              <button class="btn btn-primary">Save Changes</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-plane"></i> SkyWings</h3>
+          <p>Your trusted partner for global air travel. Manage your flights, bookings, and travel preferences all in one place.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="flights.html"><i class="fas fa-chevron-right"></i> Search Flights</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="pages/faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+            <li><a href="pages/contact.html"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+2348001234567"><i class="fas fa-phone"></i> +234 800 123 4567</a></li>
+            <li><a href="mailto:support@skywings.com"><i class="fas fa-envelope"></i> support@skywings.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SkyWings. All rights reserved. B.Sc Computer Science Project.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <button class="scroll-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

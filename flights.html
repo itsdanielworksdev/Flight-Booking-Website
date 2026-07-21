@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Flights - SkyWings</title>
+  <meta name="description" content="Browse available flights and find the best deals for your journey with SkyWings.">
+  <meta property="og:title" content="Search Flights - SkyWings">
+  <meta property="og:description" content="Browse available flights and find the best deals for your journey.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="preloader">
+    <div class="loader">
+      <div class="loader-plane"><i class="fas fa-plane"></i></div>
+      <div class="loader-text">SkyWings</div>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="navbar-brand" aria-label="SkyWings Home">
+        <span class="brand-icon"><i class="fas fa-plane"></i></span>
+        <span>SkyWings</span>
+      </a>
+      <div class="navbar-nav" role="menubar">
+        <a href="index.html" class="nav-link" role="menuitem">Home</a>
+        <a href="flights.html" class="nav-link active" aria-current="page" role="menuitem">Flights</a>
+        <a href="dashboard.html" class="nav-link" role="menuitem">Dashboard</a>
+        <a href="about.html" class="nav-link" role="menuitem">About</a>
+        <a href="pages/contact.html" class="nav-link" role="menuitem">Contact</a>
+        <div class="nav-actions">
+          <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+        </div>
+      </div>
+      <button class="navbar-toggler" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <div class="flight-results-page">
+    <!-- Breadcrumbs -->
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <span class="current" aria-current="page">Search Flights</span>
+      </nav>
+    </div>
+    <div class="results-header">
+      <div class="container">
+        <div class="results-count"><strong>15</strong> flights found</div>
+        <div class="results-sort">
+          <label for="sort-flights">Sort by:</label>
+          <select id="sort-flights">
+            <option value="price">Price: Low to High</option>
+            <option value="duration">Duration</option>
+            <option value="departure">Departure Time</option>
+            <option value="airline">Airline</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="results-layout">
+        <aside class="filters-sidebar" aria-label="Flight filters">
+          <h4>Filters <button class="btn btn-sm" style="background:var(--gray-100);color:var(--gray-600)" onclick="clearAllFilters()">Clear</button></h4>
+          
+          <div class="filter-group">
+            <h5>Airline</h5>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-airline" value="EK"> Emirates <span class="count">(3)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-airline" value="QR"> Qatar Airways <span class="count">(2)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-airline" value="ET"> Ethiopian Airlines <span class="count">(2)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-airline" value="TK"> Turkish Airlines <span class="count">(1)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-airline" value="BA"> British Airways <span class="count">(1)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-airline" value="AF"> Air France <span class="count">(1)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-airline" value="NG"> Aero Nigeria <span class="count">(2)</span></label>
+          </div>
+
+          <div class="filter-group">
+            <h5>Stops</h5>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-stops" value="0"> Direct <span class="count">(14)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-stops" value="1"> 1 Stop <span class="count">(1)</span></label>
+          </div>
+
+          <div class="filter-group">
+            <h5>Cabin Class</h5>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-class" value="Economy"> Economy <span class="count">(13)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-class" value="Business"> Business <span class="count">(1)</span></label>
+            <label class="filter-option"><input type="checkbox" class="filter-checkbox filter-class" value="First"> First Class <span class="count">(1)</span></label>
+          </div>
+
+          <div class="filter-group">
+            <h5>Max Price</h5>
+            <div class="price-range">
+              <input type="range" id="price-range" min="0" max="2000" value="2000">
+              <div class="price-values">$0 - <span id="price-display">$2,000</span></div>
+            </div>
+          </div>
+        </aside>
+
+        <main id="flight-results-container" aria-label="Flight results">
+          <!-- Flights rendered by JS with loading skeleton -->
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-plane"></i> SkyWings</h3>
+          <p>Your trusted partner for global air travel. We connect you to destinations worldwide with unbeatable prices and premium service.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="flights.html"><i class="fas fa-chevron-right"></i> Search Flights</a></li>
+            <li><a href="dashboard.html"><i class="fas fa-chevron-right"></i> My Dashboard</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="pages/faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+            <li><a href="pages/contact.html"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Cancellation</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Baggage Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+2348001234567"><i class="fas fa-phone"></i> +234 800 123 4567</a></li>
+            <li><a href="mailto:support@skywings.com"><i class="fas fa-envelope"></i> support@skywings.com</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SkyWings. All rights reserved. B.Sc Computer Science Project.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyWings - Book Your Flight | Premium Air Travel</title>
+  <meta name="description" content="Book flights to destinations worldwide with SkyWings. Best prices, premium service, and seamless booking experience.">
+  <meta name="keywords" content="flight booking, cheap flights, air travel, airline tickets, SkyWings">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="SkyWings - Book Your Flight | Premium Air Travel">
+  <meta property="og:description" content="Book flights to destinations worldwide with SkyWings. Best prices, premium service, and seamless booking experience.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://skywings.com">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SkyWings - Book Your Flight | Premium Air Travel">
+  <meta name="twitter:description" content="Book flights worldwide with SkyWings. Best prices and premium service.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader">
+      <div class="loader-plane"><i class="fas fa-plane"></i></div>
+      <div class="loader-text">SkyWings</div>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="navbar-brand" aria-label="SkyWings Home">
+        <span class="brand-icon" aria-hidden="true"><i class="fas fa-plane"></i></span>
+        <span>SkyWings</span>
+      </a>
+      <div class="navbar-nav" role="menubar">
+        <a href="index.html" class="nav-link active" aria-current="page" role="menuitem">Home</a>
+        <a href="flights.html" class="nav-link" role="menuitem">Flights</a>
+        <a href="dashboard.html" class="nav-link" role="menuitem">Dashboard</a>
+        <a href="about.html" class="nav-link" role="menuitem">About</a>
+        <a href="pages/contact.html" class="nav-link" role="menuitem">Contact</a>
+        <div class="nav-actions">
+          <div class="selector-wrapper">
+            <button class="selector-trigger" aria-label="Select currency" aria-haspopup="true" aria-expanded="false">USD <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+            <div class="selector-menu" role="menu" aria-label="Currency options">
+              <button class="selector-item active" role="menuitem">USD</button>
+              <button class="selector-item" role="menuitem">EUR</button>
+              <button class="selector-item" role="menuitem">GBP</button>
+              <button class="selector-item" role="menuitem">NGN</button>
+            </div>
+          </div>
+          <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+        </div>
+      </div>
+      <button class="navbar-toggler" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="container">
+          <div class="hero-text reveal">
+            <div class="hero-badge"><i class="fas fa-star" aria-hidden="true"></i> Trusted by 2M+ travelers worldwide</div>
+            <h1>Your Journey <span>Begins Here</span></h1>
+            <p>Discover amazing flight deals to destinations worldwide. Experience premium air travel with unbeatable prices and exceptional service.</p>
+            <div class="hero-cta">
+              <a href="#search" class="btn btn-secondary btn-lg"><i class="fas fa-search" aria-hidden="true"></i> Search Flights</a>
+              <a href="flights.html" class="btn btn-light btn-lg"><i class="fas fa-tags" aria-hidden="true"></i> View Deals</a>
+            </div>
+          </div>
+
+          <!-- Flight Search Form -->
+          <div class="search-form-wrapper reveal reveal-delay-1" id="search">
+            <div class="search-tabs" role="tablist" aria-label="Trip type">
+              <button class="search-tab active" data-trip="roundtrip" role="tab" aria-selected="true">Round Trip</button>
+              <button class="search-tab" data-trip="oneway" role="tab" aria-selected="false">One Way</button>
+              <button class="search-tab" data-trip="multicity" role="tab" aria-selected="false">Multi-City</button>
+            </div>
+            <form class="search-form" novalidate>
+              <div class="form-group">
+                <label for="from">From</label>
+                <div class="autocomplete-wrapper">
+                  <input type="text" id="from" class="airport-input" placeholder="City or Airport code (e.g. LOS)" value="LOS" aria-label="Departure airport" autocomplete="off" required>
+                  <div class="autocomplete-list" role="listbox"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="to">To</label>
+                <div class="autocomplete-wrapper">
+                  <input type="text" id="to" class="airport-input" placeholder="City or Airport code (e.g. DXB)" value="DXB" aria-label="Destination airport" autocomplete="off" required>
+                  <div class="autocomplete-list" role="listbox"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="depart">Departure</label>
+                <input type="date" id="depart" value="2026-07-15" aria-label="Departure date" required>
+              </div>
+              <div class="form-group" id="return-date-group">
+                <label for="return">Return</label>
+                <input type="date" id="return" value="2026-07-20" aria-label="Return date">
+              </div>
+              <div class="form-group">
+                <label for="passengers">Passengers</label>
+                <select id="passengers" aria-label="Number of passengers">
+                  <option value="1">1 Adult</option>
+                  <option value="2">2 Adults</option>
+                  <option value="3">3 Adults</option>
+                  <option value="4">4 Adults</option>
+                  <option value="5">5 Adults</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cabin">Cabin Class</label>
+                <select id="cabin" aria-label="Cabin class">
+                  <option value="Economy">Economy</option>
+                  <option value="Premium Economy">Premium Economy</option>
+                  <option value="Business">Business</option>
+                  <option value="First">First Class</option>
+                </select>
+              </div>
+              <div class="search-btn-wrapper">
+                <button type="submit" class="search-btn"><i class="fas fa-search" aria-hidden="true"></i> Search Flights</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Hero Stats -->
+          <div class="hero-stats reveal reveal-delay-2">
+            <div class="hero-stat">
+              <span class="num">200+</span>
+              <span class="lbl">Destinations</span>
+            </div>
+            <div class="hero-stat">
+              <span class="num">2M+</span>
+              <span class="lbl">Happy Travelers</span>
+            </div>
+            <div class="hero-stat">
+              <span class="num">15K+</span>
+              <span class="lbl">Daily Flights</span>
+            </div>
+            <div class="hero-stat">
+              <span class="num">50+</span>
+              <span class="lbl">Awards Won</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Counters Section -->
+    <section class="counter-section" aria-label="Company statistics">
+      <div class="container">
+        <div class="counters-grid">
+          <div class="counter-item reveal">
+            <div class="counter-icon" aria-hidden="true"><i class="fas fa-globe"></i></div>
+            <div class="counter-number" data-target="200">0</div>
+            <div class="counter-label">Destinations</div>
+          </div>
+          <div class="counter-item reveal">
+            <div class="counter-icon" aria-hidden="true"><i class="fas fa-smile"></i></div>
+            <div class="counter-number" data-target="2000000">0</div>
+            <div class="counter-label">Happy Travelers</div>
+          </div>
+          <div class="counter-item reveal">
+            <div class="counter-icon" aria-hidden="true"><i class="fas fa-plane"></i></div>
+            <div class="counter-number" data-target="15000">0</div>
+            <div class="counter-label">Daily Flights</div>
+          </div>
+          <div class="counter-item reveal">
+            <div class="counter-icon" aria-hidden="true"><i class="fas fa-trophy"></i></div>
+            <div class="counter-number" data-target="50">0</div>
+            <div class="counter-label">Awards Won</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="section-padding" aria-label="Popular destinations">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Popular Destinations</h2>
+          <p>Explore our most loved destinations with exclusive flight deals</p>
+        </div>
+        <div class="destinations-grid">
+          <div class="destination-card reveal reveal-delay-1" data-name="Dubai" role="button" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&h=350&fit=crop" alt="Dubai skyline with modern architecture" loading="lazy">
+            <div class="destination-overlay">
+              <h3>Dubai</h3>
+              <p>United Arab Emirates</p>
+              <span class="destination-price">From $850</span>
+            </div>
+          </div>
+          <div class="destination-card reveal reveal-delay-2" data-name="London" role="button" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=350&fit=crop" alt="London city landmarks" loading="lazy">
+            <div class="destination-overlay">
+              <h3>London</h3>
+              <p>United Kingdom</p>
+              <span class="destination-price">From $920</span>
+            </div>
+          </div>
+          <div class="destination-card reveal reveal-delay-3" data-name="Paris" role="button" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=350&fit=crop" alt="Paris Eiffel Tower" loading="lazy">
+            <div class="destination-overlay">
+              <h3>Paris</h3>
+              <p>France</p>
+              <span class="destination-price">From $780</span>
+            </div>
+          </div>
+          <div class="destination-card reveal" data-name="Tokyo" role="button" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=350&fit=crop" alt="Tokyo cityscape" loading="lazy">
+            <div class="destination-overlay">
+              <h3>Tokyo</h3>
+              <p>Japan</p>
+              <span class="destination-price">From $1,500</span>
+            </div>
+          </div>
+          <div class="destination-card reveal reveal-delay-2" data-name="New York" role="button" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400&h=350&fit=crop" alt="New York skyline" loading="lazy">
+            <div class="destination-overlay">
+              <h3>New York</h3>
+              <p>USA</p>
+              <span class="destination-price">From $1,200</span>
+            </div>
+          </div>
+          <div class="destination-card reveal reveal-delay-3" data-name="Cairo" role="button" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=400&h=350&fit=crop" alt="Cairo pyramids" loading="lazy">
+            <div class="destination-overlay">
+              <h3>Cairo</h3>
+              <p>Egypt</p>
+              <span class="destination-price">From $550</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="section-padding testimonials" aria-label="Travel offers">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Exclusive Offers</h2>
+          <p>Take advantage of our limited-time deals and save big on your next trip</p>
+        </div>
+        <div class="offers-grid">
+          <div class="offer-card reveal reveal-delay-1">
+            <span class="offer-badge">-30%</span>
+            <div class="offer-image">
+              <img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=400&h=250&fit=crop" alt="Summer beach travel destination" loading="lazy">
+            </div>
+            <div class="offer-content">
+              <h3>Summer Sale - 30% Off</h3>
+              <p>Book your summer getaway with exclusive discounts to top destinations worldwide.</p>
+              <div class="offer-price">
+                <span class="price">$840 <del aria-label="Original price $1,200">$1,200</del></span>
+                <button class="btn btn-primary btn-sm">Book Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="offer-card reveal reveal-delay-2">
+            <span class="offer-badge">-25%</span>
+            <div class="offer-image">
+              <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?w=400&h=250&fit=crop" alt="Business class luxury travel" loading="lazy">
+            </div>
+            <div class="offer-content">
+              <h3>Business Class Upgrade</h3>
+              <p>Experience luxury travel with complimentary lounge access and premium amenities.</p>
+              <div class="offer-price">
+                <span class="price">$1,875 <del aria-label="Original price $2,500">$2,500</del></span>
+                <button class="btn btn-primary btn-sm">Book Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="offer-card reveal reveal-delay-3">
+            <span class="offer-badge">-30%</span>
+            <div class="offer-image">
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=250&fit=crop" alt="Family traveling together" loading="lazy">
+            </div>
+            <div class="offer-content">
+              <h3>Family Package Deal</h3>
+              <p>Travel with family and save big! Kids fly at 50% off on selected routes.</p>
+              <div class="offer-price">
+                <span class="price">$1,400 <del aria-label="Original price $2,000">$2,000</del></span>
+                <button class="btn btn-primary btn-sm">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flight Status + Weather Widget -->
+    <section class="section-padding" aria-label="Live flight status and weather">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-7 reveal">
+            <div class="flight-status-widget">
+              <h3><i class="fas fa-plane-departure" aria-hidden="true"></i> Live Flight Status</h3>
+              <div class="flight-status-list"></div>
+            </div>
+          </div>
+          <div class="col-lg-5 reveal reveal-delay-1">
+            <div class="weather-widget">
+              <div class="weather-data" data-city="Lagos"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding testimonials" aria-label="Customer testimonials">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>What Our Travelers Say</h2>
+          <p>Real experiences from our valued customers around the world</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal reveal-delay-1">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p class="testimonial-text">"The booking experience was seamless. Found the best deals and the interface is incredibly user-friendly. Highly recommend!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">SJ</div>
+              <div class="testimonial-info">
+                <h4>Sarah Johnson</h4>
+                <span>Business Traveler</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-2">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p class="testimonial-text">"I use this platform for all my travels. The flight tracking feature and real-time updates are game-changers."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">MC</div>
+              <div class="testimonial-info">
+                <h4>Michael Chen</h4>
+                <span>Frequent Flyer</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-3">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p class="testimonial-text">"Booked my family vacation here and saved over 40%! The customer support was exceptional throughout our journey."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">AO</div>
+              <div class="testimonial-info">
+                <h4>Amara Okafor</h4>
+                <span>Vacation Traveler</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section section-padding" aria-label="Airline partners">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Our Airline Partners</h2>
+          <p>We partner with the world's leading airlines to bring you the best flight options</p>
+        </div>
+        <div class="partners-track" aria-hidden="true">
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Emirates</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Qatar Airways</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">British Airways</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Air France</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Lufthansa</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Turkish Airlines</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Etihad</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">KLM</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Singapore Airlines</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Ethiopian Airlines</span></div>
+          <!-- Duplicate for infinite scroll -->
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Emirates</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Qatar Airways</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">British Airways</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Air France</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Lufthansa</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Turkish Airlines</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Etihad</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">KLM</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Singapore Airlines</span></div>
+          <div class="partner-item"><i class="fas fa-plane"></i> <span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;font-weight:600;">Ethiopian Airlines</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter section-padding" aria-label="Newsletter subscription">
+      <div class="container">
+        <div class="newsletter-content reveal">
+          <h2>Stay Updated with Exclusive Deals</h2>
+          <p>Subscribe to our newsletter and be the first to know about special offers, new routes, and travel tips.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email address" aria-label="Email for newsletter" required>
+            <button type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-plane" aria-hidden="true"></i> SkyWings</h3>
+          <p>Your trusted partner for global air travel. We connect you to destinations worldwide with unbeatable prices and premium service.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Subscribe to our YouTube channel"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Home</a></li>
+            <li><a href="flights.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Search Flights</a></li>
+            <li><a href="dashboard.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> My Dashboard</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+            <li><a href="pages/contact.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="pages/faq.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> FAQ</a></li>
+            <li><a href="pages/contact.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Help Center</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> Cancellation</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> Baggage Info</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> Travel Insurance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+2348001234567" aria-label="Call us at +234 800 123 4567"><i class="fas fa-phone" aria-hidden="true"></i> +234 800 123 4567</a></li>
+            <li><a href="mailto:support@skywings.com"><i class="fas fa-envelope" aria-hidden="true"></i> support@skywings.com</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lagos, Nigeria</a></li>
+            <li><a href="#"><i class="fas fa-clock" aria-hidden="true"></i> 24/7 Customer Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SkyWings. All rights reserved. B.Sc Computer Science Project.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" aria-label="Scroll to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
