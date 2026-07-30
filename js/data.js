@@ -414,8 +414,8 @@ const faqData = [
 
 // User Data (Mock)
 const currentUser = {
-  name: 'John Doe',
-  email: 'john.doe@example.com',
+  name: 'Ogar Michael',
+  email: 'ogar.michael@example.com',
   memberSince: '2024',
   upcomingTrips: 2,
   totalBookings: 15,
@@ -434,9 +434,9 @@ const bookingHistory = [
 
 // Saved Passengers (Mock)
 const savedPassengers = [
-  { name: 'Jane Doe', type: 'Adult', document: 'Passport: AB123456' },
-  { name: 'Tommy Doe', type: 'Child', document: 'Passport: CD789012' },
-  { name: 'Emma Doe', type: 'Infant', document: 'Passport: EF345678' }
+  { name: 'Jane Michael', type: 'Adult', document: 'Passport: AB123456' },
+  { name: 'Tommy Michael', type: 'Child', document: 'Passport: CD789012' },
+  { name: 'Emma Michael', type: 'Infant', document: 'Passport: EF345678' }
 ];
 
 // Notifications (Mock)

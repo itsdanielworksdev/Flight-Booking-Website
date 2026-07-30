@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking Confirmed - SkyWings</title>
-  <meta name="description" content="Your SkyWings flight booking is confirmed. View your e-ticket and manage your trip.">
-  <meta property="og:title" content="Booking Confirmed - SkyWings">
+  <title>My Wishlist - SkyWings</title>
+  <meta name="description" content="View and manage your saved flights on SkyWings.">
+  <meta property="og:title" content="My Wishlist - SkyWings">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <a href="#confirmation-main" class="skip-link">Skip to main content</a>
+  <a href="#wishlist-main" class="skip-link">Skip to main content</a>
   <div id="preloader"><div class="loader"><div class="loader-plane"><i class="fas fa-plane"></i></div><div class="loader-text">SkyWings</div><div class="loader-bar"></div></div></div>
   <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
@@ -32,64 +32,20 @@
   </nav>
   <div class="nav-overlay"></div>
 
-  <div class="booking-page" id="confirmation-main" style="display:flex;align-items:center;justify-content:center;min-height:100vh">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="../index.html">Home</a>
-        <span class="separator">/</span>
-        <a href="../booking.html">Booking</a>
-        <span class="separator">/</span>
-        <span class="current" aria-current="page">Booking Confirmed</span>
-      </nav>
-      <div class="confirmation-card" style="max-width:800px;margin:40px auto 60px;background:var(--white);border-radius:var(--radius-xl);padding:50px;box-shadow:var(--shadow-xl);text-align:center">
-        <div class="confirmation-icon"><i class="fas fa-check"></i></div>
-        <h2>Booking Confirmed!</h2>
-        <p>Your flight has been booked successfully. A confirmation email will be sent to your registered email address.</p>
-        <div class="booking-ref">
-          <span class="ref-num">SKW-2026-0842</span>
-          <br><small>Booking Reference</small>
-        </div>
-
-        <div class="eticket" style="text-align:left">
-          <div class="eticket-header">
-            <h3>E-Ticket</h3>
-            <span>SKW-2026-0842</span>
-          </div>
-          <div class="eticket-body">
-            <div class="eticket-route">
-              <div class="eticket-time"><div class="time">23:45</div><div class="airport">LOS</div></div>
-              <div class="eticket-duration"><div class="line"></div><span>7h 45m</span></div>
-              <div class="eticket-time"><div class="time">06:30</div><div class="airport">DXB</div></div>
-            </div>
-            <div class="eticket-info">
-              <div class="info-item"><div class="label">Passenger</div><div class="value">John Doe</div></div>
-              <div class="info-item"><div class="label">Flight</div><div class="value">EK 783</div></div>
-              <div class="info-item"><div class="label">Date</div><div class="value">Jul 15, 2026</div></div>
-              <div class="info-item"><div class="label">Seat</div><div class="value">3A</div></div>
-              <div class="info-item"><div class="label">Class</div><div class="value">Economy</div></div>
-              <div class="info-item"><div class="label">Baggage</div><div class="value">30kg</div></div>
-            </div>
-          </div>
-          <div class="eticket-footer">Thank you for flying with SkyWings. Have a pleasant journey!</div>
-        </div>
-
-        <!-- Booking Timeline -->
-        <div id="booking-timeline" style="max-width:500px;margin:24px auto;text-align:left"></div>
-
-        <!-- Social Sharing -->
-        <div id="social-share" style="margin-top:24px"></div>
-        <div style="margin-top:12px" id="recent-flights"></div>
-
-        <!-- Invoice Download -->
-        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px">
-          <button class="btn btn-primary" id="download-invoice"><i class="fas fa-file-invoice"></i> Download Invoice</button>
-          <button class="btn btn-light" id="print-invoice"><i class="fas fa-print"></i> Print E-Ticket</button>
-        </div>
-        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px">
-          <a href="../dashboard.html" class="btn btn-primary"><i class="fas fa-user"></i> View My Dashboard</a>
-          <a href="../index.html" class="btn btn-light"><i class="fas fa-home"></i> Back to Home</a>
-        </div>
+  <div class="wishlist-page" id="wishlist-main">
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="separator">/</span>
+          <span class="current" aria-current="page">My Wishlist</span>
+        </nav>
+        <h1><i class="fas fa-heart"></i> My Wishlist</h1>
+        <p>Flights you've saved for later</p>
       </div>
+    </div>
+    <div class="container">
+      <div id="wishlist-container" style="padding:40px 0 80px"></div>
     </div>
   </div>
 
@@ -120,8 +76,6 @@
           <ul class="footer-links">
             <li><a href="faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
             <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Help Center</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Cancellation</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Baggage Info</a></li>
           </ul>
         </div>
         <div>
@@ -129,12 +83,11 @@
           <ul class="footer-links">
             <li><a href="tel:+2348001234567"><i class="fas fa-phone"></i> +234 800 123 4567</a></li>
             <li><a href="mailto:support@skywings.com"><i class="fas fa-envelope"></i> support@skywings.com</a></li>
-            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 SkyWings. All rights reserved. B.Sc Computer Science Project.</p>
+        <p>&copy; 2026 SkyWings. All rights reserved.</p>
         <div class="footer-bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>

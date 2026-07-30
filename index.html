@@ -411,6 +411,32 @@
       </div>
     </section>
 
+    <!-- Travel Blog Section -->
+    <section class="section-padding" aria-label="Travel blog and tips" id="blog-container"></section>
+
+    <!-- App Download Section -->
+    <section class="app-download" aria-label="Download our mobile app">
+      <div class="container">
+        <div class="app-download-text reveal">
+          <h2>Get the SkyWings App</h2>
+          <p>Book flights, track your trips, and access exclusive mobile-only deals right from your phone.</p>
+          <div class="app-badges">
+            <a href="#" class="app-badge" aria-label="Download on the App Store">
+              <i class="fab fa-apple"></i>
+              <span class="badge-text"><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+            <a href="#" class="app-badge" aria-label="Get it on Google Play">
+              <i class="fab fa-google-play"></i>
+              <span class="badge-text"><small>Get it on</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+        <div class="app-download-mockup reveal reveal-delay-1">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+      </div>
+    </section>
+
     <!-- Newsletter -->
     <section class="newsletter section-padding" aria-label="Newsletter subscription">
       <div class="container">
@@ -483,6 +509,66 @@
 
   <!-- Scroll to Top -->
   <button class="scroll-top" aria-label="Scroll to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+
+  <!-- ===== AUTH MODAL (injected by JS) ===== -->
+
+  <!-- ===== LIVE CHAT ===== -->
+  <div class="chat-bubble" id="chat-bubble" aria-label="Open live chat">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    <span class="notif-dot">1</span>
+  </div>
+  <div class="chat-window" id="chat-window">
+    <div class="chat-header">
+      <div class="avatar">S</div>
+      <div>
+        <h4>SkyWings Support</h4>
+        <p>Online • Usually replies in 5min</p>
+      </div>
+      <span class="chat-close" id="chat-close">&times;</span>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg support">👋 Hello! Welcome to SkyWings. How can I help you today?<span class="time">Just now</span></div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chat-input" placeholder="Type your message..." aria-label="Chat message">
+      <button id="chat-send" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- ===== COOKIE CONSENT ===== -->
+  <div class="cookie-consent" id="cookie-consent">
+    <div class="container">
+      <div class="cookie-text">
+        <p>🍪 We use cookies to enhance your experience. By continuing to browse, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Cookie Policy</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-sm" style="background:var(--gray-100);color:var(--gray-600)" id="cookie-decline">Decline</button>
+        <button class="btn btn-sm btn-secondary" id="cookie-accept">Accept All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STRUCTURED DATA (JSON-LD) ===== -->
+  <script type="application/ld+json" class="schema-hidden">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "SkyWings",
+    "url": "https://skywings.com",
+    "logo": "https://skywings.com/logo.png",
+    "description": "Premium flight booking platform connecting travelers to destinations worldwide.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lagos",
+      "addressCountry": "NG"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "25000"
+    }
+  }
+  </script>
 
   <!-- Scripts -->
   <script src="js/data.js"></script>
